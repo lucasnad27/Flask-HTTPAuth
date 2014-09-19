@@ -13,6 +13,7 @@ from hashlib import md5
 from random import Random, SystemRandom
 from flask import request, make_response, session
 
+
 class HTTPAuth(object):
     def __init__(self):
         def default_get_password(username):
@@ -61,6 +62,7 @@ class HTTPAuth(object):
     def username(self):
         return request.authorization.username
 
+
 class HTTPBasicAuth(HTTPAuth):
     def __init__(self):
         super(HTTPBasicAuth, self).__init__()
@@ -88,6 +90,7 @@ class HTTPBasicAuth(HTTPAuth):
             except TypeError:
                 client_password = self.hash_password_callback(auth.username, client_password)
         return client_password == stored_password
+
 
 class HTTPDigestAuth(HTTPAuth):
     def __init__(self):
